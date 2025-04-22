@@ -22,16 +22,18 @@ enter = canvas.create_text(170,100,text="Enter the task  :", font=("Comic Sans M
 # Entry box
 task_entry = Entry(width=25, font=("Comic Sans MS", 12), bg=PASTEL_BLUE, fg="white")
 canvas.create_window(425, 100, window=task_entry)
+task_entry.focus()
 
-task_y = 130
+task_y = 120
 #function to add the text
 def add_text():
     global task_y
-    task_y+=40
+    task_y+=50
     text = task_entry.get()
     is_checked = IntVar()
-    checkbox = Checkbutton(text=text, font=("Comic Sans MS", 12), fg="#5B72B3", variable=is_checked, bg=PASTEL_BLUE, highlightthickness=0)
-    canvas.create_window(170, task_y, window=checkbox)
+    checkbox = Checkbutton(text=text, font=("Comic Sans MS", 12), fg="#5B72B3" ,variable=is_checked, bg=PASTEL_BLUE, highlightthickness=0, wraplength=550, justify="left")
+    canvas.create_window(100, task_y, window=checkbox, anchor="w")
+    task_entry.delete(0,"end")
 
 # Button to add
 add_button = Button(text="Add Task", font=("Comic Sans MS", 12, "bold"), bg="#4A61A1", fg="white", command=add_text)
